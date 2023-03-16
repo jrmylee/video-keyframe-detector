@@ -32,7 +32,10 @@ def keyframeDetection(source, dest, Thres, plotMetrics=False, verbose=False):
     for i in range(length):
         ret, frame = cap.read()
         grayframe, blur_gray = convert_frame_to_grayscale(frame)
-
+        
+        if blur_gray is None:
+            break
+            
         frame_number = cap.get(cv2.CAP_PROP_POS_FRAMES) - 1
         lstfrm.append(frame_number)
         images.append(grayframe)
